@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+
+// variables-related sections
+@import
+  'abstracts/variables',
+  'abstracts/mixins';
+
+// Layout-related sections
+@import
+  'layout/navbar',
+  'layout/footer';
+
+//  Page-specific styles
+@import
+  'pages/home';
+
+//  Themes
+@import
+  'themes/default';
+
+// // ion icons
+// @import
+//   'icons/ionicons';
+
+// Media Queries
+@import
+  'abstracts/queries';
