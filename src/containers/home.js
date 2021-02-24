@@ -9,18 +9,55 @@ import DepartmentList from "../Components/Departments";
 import HomeServicesList from "../Components/HomeServicesList";
 // Testimonial Api File
 import testimonialService from "../services/testimonial";
+import DepartmentService from "../services/departments";
+import BlogService from "../services/blog";
+import DoctorService from "../services/doctor";
 
-const Home = (props) => {
+const Home = ({ services }) => {
   const [data, setData] = useState([]);
+  const [dept, setDept] = useState([]);
+  const [blog, setBlog] = useState([]);
+  const [doctor, setDoctor] = useState([]);
+
+  // console.log({data, dept, blog, doctor})
+
   useEffect(() => {
     getTestimonials();
+    getDepartments();
+    getBlog();
   }, []);
 
   const getTestimonials = async () => {
     try {
       const response = await testimonialService.gettestimonials();
-      console.log("response ---> ", response);
       if (response) setData(response);
+    } catch (error) {
+      console.log("error----> ", error);
+    }
+  };
+
+  const getDepartments = async () => {
+    try {
+      const response = await DepartmentService.getDepartments();
+      if (response) setDept(response);
+    } catch (error) {
+      console.log("error----> ", error);
+    }
+  };
+
+  const getBlog = async () => {
+    try {
+      const response = await BlogService.getBlog();
+      if (response) setBlog(response);
+    } catch (error) {
+      console.log("error----> ", error);
+    }
+  };
+
+  const getDoctor = async () => {
+    try {
+      const response = await DoctorService.getDoctor();
+      if (response) setDoctor(response);
     } catch (error) {
       console.log("error----> ", error);
     }
@@ -78,11 +115,9 @@ const Home = (props) => {
                 </a>
               </div>
             </div>
-            <HomeServicesList />
-            <HomeServicesList />
-            <HomeServicesList />
-            <HomeServicesList />
-            <HomeServicesList />
+            {services?.map((item, ind) => (
+              <HomeServicesList key={ind} service={{ ...item, ind }} />
+            ))}
           </div>
         </div>
       </section>
@@ -205,14 +240,9 @@ const Home = (props) => {
       <section className="space-pb mt-n5 mt-lg-n7">
         <div className="container">
           <div className="row justify-content-center">
-            <DepartmentList />
-            <DepartmentList />
-            <DepartmentList />
-            <DepartmentList />
-            <DepartmentList />
-            <DepartmentList />
-            <DepartmentList />
-            <DepartmentList />
+            {dept?.map((department, ind) => (
+              <DepartmentList key={ind} {...department} />
+            ))}
           </div>
           <div className="row mt-4">
             <div className="col-sm-12 text-center">
@@ -308,73 +338,9 @@ const Home = (props) => {
         </div>
         <div className="container">
           <div className="row">
-            <DoctorList />
-            <div className="col-lg-3 col-md-6 mb-lg-0 mb-4">
-              <div className="team team-style-02">
-                <div className="team-image">
-                  <img
-                    className="img-fluid b-radius-bottom-none"
-                    src={imagesData.team01}
-                    alt=""
-                  />
-                </div>
-                <div className="team-detail b-radius-top-none">
-                  <span className="team-label">Neurologist</span>
-                  <h4 className="team-title">
-                    <a href="team-single.html">Dr.Alice Williams</a>
-                  </h4>
-                  <span className="team-phone">+(704) 279-1249</span>
-                  <span className="team-email">letstalk@medileaf.com</span>
-                </div>
-                <a className="icon-btn" href="#">
-                  <i className="fas fa-plus"></i>
-                </a>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 mb-md-0 mb-4">
-              <div className="team team-style-02">
-                <div className="team-image">
-                  <img
-                    className="img-fluid b-radius-bottom-none"
-                    src={imagesData.team01}
-                    alt=""
-                  />
-                </div>
-                <div className="team-detail b-radius-top-none">
-                  <span className="team-label">Physician Assistant</span>
-                  <h4 className="team-title">
-                    <a href="team-single.html">Dr.Paul Flavius</a>
-                  </h4>
-                  <span className="team-phone">+(704) 279-1249</span>
-                  <span className="team-email">letstalk@medileaf.com</span>
-                </div>
-                <a className="icon-btn" href="#">
-                  <i className="fas fa-plus"></i>
-                </a>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6">
-              <div className="team team-style-02">
-                <div className="team-image">
-                  <img
-                    className="img-fluid b-radius-bottom-none"
-                    src={imagesData.team01}
-                    alt=""
-                  />
-                </div>
-                <div className="team-detail b-radius-top-none">
-                  <span className="team-label">Physician Assistant</span>
-                  <h4 className="team-title">
-                    <a href="team-single.html">Dr.Michael Bean</a>
-                  </h4>
-                  <span className="team-phone">+(704) 279-1249</span>
-                  <span className="team-email">letstalk@medileaf.com</span>
-                </div>
-                <a className="icon-btn" href="#">
-                  <i className="fas fa-plus"></i>
-                </a>
-              </div>
-            </div>
+            {doctor?.map((doctor, ind) => (
+              <DoctorList key={ind} {...doctor} />
+            ))}
           </div>
         </div>
       </section>
@@ -404,9 +370,9 @@ const Home = (props) => {
             </div>
           </div>
           <div className="row">
-            <BlogPost />
-            <BlogPost />
-            <BlogPost />
+            {blog?.map((blog, ind) => (
+              <BlogPost key={ind} {...blog} />
+            ))}
           </div>
         </div>
       </section>
@@ -427,8 +393,8 @@ const Home = (props) => {
                 data-autoheight="true"
               >
                 <Carousel autoplay dots={false}>
-                  {data?.map((testimonial) => (
-                    <Testimonial {...testimonial} />
+                  {data?.map((testimonial, ind) => (
+                    <Testimonial key={ind} {...testimonial} />
                   ))}
                 </Carousel>
               </div>

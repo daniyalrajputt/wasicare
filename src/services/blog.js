@@ -1,8 +1,8 @@
 import { baseUrl } from "../Constants";
-class Service {
-  getServices = () => {
+class Blog {
+  getBlog = () => {
     return new Promise(async (resolve, reject) => {
-      const response = await fetch(`${baseUrl}/get_services`);
+      const response = await fetch(`${baseUrl}/get_blog`);
       if (response.ok) {
         const data = await response.json();
         resolve(data);
@@ -11,4 +11,4 @@ class Service {
     });
   };
 }
-export default new Service();
+export default new Blog();

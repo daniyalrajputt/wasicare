@@ -1,7 +1,8 @@
 import React from 'react'
 import { imagesData } from '../dummyData';
 
-function DoctorList() {
+function DoctorList(props) {
+    console.log("abcccccccccccccccccc", props)
     return (
         <div className="col-lg-3 col-md-6 mb-lg-0 mb-4">
             <div className="team team-style-02">
