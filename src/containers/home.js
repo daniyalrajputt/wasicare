@@ -82,7 +82,7 @@ const Home = ({ services }) => {
                 <p className="mb-5">
                   Compassionate Care, Advanced Medicine, Close to Home
                 </p>
-                <a className="btn btn-primary" href="#">
+                <a className="btn btn-primary" >
                   Discover More
                 </a>
               </div>
@@ -111,7 +111,7 @@ const Home = ({ services }) => {
                   We can look a bit further back in time to Albert Einstein or
                   even further.
                 </p>
-                <a href="#" className="btn btn-link">
+                <a  className="btn btn-link">
                   All Service
                 </a>
               </div>
@@ -150,49 +150,7 @@ const Home = ({ services }) => {
               </p>
               <div className="row align-items-center">
                 <div className="col-lg-12">
-                  <div
-                    className="owl-carousel d-flex"
-                    data-nav-arrow="false"
-                    data-items="3"
-                    data-md-items="3"
-                    data-sm-items="3"
-                    data-xs-items="2"
-                    data-xx-items="1"
-                    data-space="30"
-                    data-autoheight="true"
-                  >
-                    <div className="item">
-                      <img
-                        className="img-fluid center-block mx-auto"
-                        src={imagesData.client01}
-                        alt=""
-                      />
-                    </div>
-
-                    <div className="item">
-                      <img
-                        className="img-fluid center-block mx-auto"
-                        src={imagesData.client02}
-                        alt=""
-                      />
-                    </div>
-
-                    <div className="item">
-                      <img
-                        className="img-fluid center-block mx-auto"
-                        src={imagesData.client03}
-                        alt=""
-                      />
-                    </div>
-
-                    <div className="item">
-                      <img
-                        className="img-fluid center-block mx-auto"
-                        src={imagesData.client04}
-                        alt=""
-                      />
-                    </div>
-
+                  <div className="d-flex justify-content-between">
                     <div className="item">
                       <img
                         className="img-fluid center-block mx-auto"
@@ -382,17 +340,7 @@ const Home = ({ services }) => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-12">
-              <div
-                className="owl-carousel testimonial"
-                data-nav-arrow="false"
-                data-items="1"
-                data-md-items="1"
-                data-sm-items="1"
-                data-xs-items="1"
-                data-xx-items="1"
-                data-space="0"
-                data-autoheight="true"
-              >
+              <div>
                 <Carousel autoplay dots={false}>
                   {data?.map((testimonial, ind) => (
                     <Testimonial key={ind} {...testimonial} />
