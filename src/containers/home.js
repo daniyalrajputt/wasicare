@@ -25,6 +25,7 @@ const Home = ({ services }) => {
     getTestimonials();
     getDepartments();
     getBlog();
+    getDoctor();
   }, []);
 
   const getTestimonials = async () => {
@@ -56,7 +57,7 @@ const Home = ({ services }) => {
 
   const getDoctor = async () => {
     try {
-      const response = await DoctorService.getDoctor();
+      const response = await DoctorService.getDoctors();
       if (response) setDoctor(response);
     } catch (error) {
       console.log("error----> ", error);

@@ -27,6 +27,7 @@ import about04 from "./images/about/04.png";
 import blog01 from "./images/blog/01.jpg";
 import blog02 from "./images/blog/02.jpg";
 import blog03 from "./images/blog/03.jpg";
+import blog04 from "./images/blog/04.jpg";
 import avatar01 from "./images/avatar/01.jpg";
 import avatar02 from "./images/avatar/02.jpg";
 import avatar03 from "./images/avatar/03.jpg";
@@ -66,6 +67,7 @@ export const imagesData = {
     blog01,
     blog02,
     blog03,
+    blog04,
     avatar01,
     avatar02,
     avatar03,
