@@ -111,7 +111,7 @@ const Home = ({ services }) => {
                   We can look a bit further back in time to Albert Einstein or
                   even further.
                 </p>
-                <a  className="btn btn-link">
+                <a className="btn btn-link">
                   All Service
                 </a>
               </div>
@@ -340,7 +340,15 @@ const Home = ({ services }) => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-12">
-              <div>
+              <div className="owl-carousel testimonial"
+                data-nav-arrow="false"
+                data-items="1"
+                data-md-items="1"
+                data-sm-items="1"
+                data-xs-items="1"
+                data-xx-items="1"
+                data-space="0"
+                data-autoheight="true">
                 <Carousel autoplay dots={false}>
                   {data?.map((testimonial, ind) => (
                     <Testimonial key={ind} {...testimonial} />
